@@ -9,9 +9,14 @@
 
 .default-product-card-body {
   padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
 
   h3 {
     font-size: 1.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   p {
