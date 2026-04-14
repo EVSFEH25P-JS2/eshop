@@ -25,7 +25,11 @@ function DefaultProductCard({ product }) {
   return (
     <>
       <div className="default-product-card-header">
-        <img src={product.thumbnail} width="100%" />
+        <img
+          src={product.thumbnail}
+          width="100%"
+          alt={`Thumbnail of ${product.title}`}
+        />
       </div>
       <div className="default-product-card-body">
         <h3>{product.title}</h3>
