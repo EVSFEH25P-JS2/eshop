@@ -2,6 +2,10 @@ import Card from "./Card";
 import "../styles/ProductCard.css";
 import { Page } from "../App";
 
+/**
+ * Visar ett produktkort och navigerar till produktsidan när man klickar.
+ * Vi stödjer två varianter via "type"-propen: "default" (stor) och "small" (liten).
+ */
 function ProductCard({ type = "default", product, setRoute }) {
   let variant = null;
   if (type === "small") {
@@ -11,16 +15,21 @@ function ProductCard({ type = "default", product, setRoute }) {
   }
 
   return (
+    // Vi skickar produktens id med i route-datan så att ProductDetails vet vad som ska hämtas.
     <Card onClick={() => setRoute(Page.PRODUCT, { productId: product.id })}>
       {variant}
     </Card>
   );
 }
 
+// TODO: implementera den lilla varianten av produktkortet
 function SmallProductCard({ product }) {
   return <></>;
 }
 
+/**
+ * Standardvarianten av produktkortet med bild, titel och kategori.
+ */
 function DefaultProductCard({ product }) {
   return (
     <>

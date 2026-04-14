@@ -1,15 +1,22 @@
 import { Page } from "../App";
 import "../styles/Nav.css";
 
+/**
+ * Navigeringsfältet högst upp på sidan.
+ * Vi tar emot routeName för att kunna markera vilken sida som är aktiv,
+ * och setRoute för att kunna byta sida när användaren klickar.
+ */
 function Nav({ routeName, setRoute }) {
   return (
     <nav className="nav">
       <div>
+        {/* TODO: lägg till logotyp */}
         <div>
           <img />
         </div>
 
         <ul>
+          {/* Vi jämför routeName med Page-konstanterna för att sätta "active"-klassen rätt. */}
           <li>
             <button
               className={routeName === Page.HOME ? "active" : ""}
@@ -26,6 +33,7 @@ function Nav({ routeName, setRoute }) {
               Shop
             </button>
           </li>
+          {/* TODO: implementera Featured- och Recommended-sidor */}
           <li>
             <button onClick={() => setRoute("TODO: add featured page")}>
               Featured
@@ -39,6 +47,7 @@ function Nav({ routeName, setRoute }) {
         </ul>
       </div>
 
+      {/* TODO: lägg till t.ex. kundvagn eller inloggning här */}
       <div></div>
     </nav>
   );

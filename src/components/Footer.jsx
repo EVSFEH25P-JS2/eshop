@@ -1,3 +1,4 @@
+// TODO: implementera sidfoten
 function Footer() {
   return <>Footer</>;
 }

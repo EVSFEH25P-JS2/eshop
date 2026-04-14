@@ -1,3 +1,11 @@
+.home-status {
+  color: hsl(0, 0%, 45%);
+
+  &.home-status--error {
+    color: hsl(0, 75%, 45%);
+  }
+}
+
 .home-page {
   width: max-content;
   display: flex;
