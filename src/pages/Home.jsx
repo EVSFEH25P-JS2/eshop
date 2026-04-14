@@ -3,7 +3,7 @@ import ProductCard from "../components/ProductCard";
 import "../styles/Home.css";
 import { apiFetchAllProducts } from "../api/product";
 
-function Home() {
+function Home({ setRoute }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
@@ -17,16 +17,18 @@ function Home() {
       <ProductSection
         title="Featured Products"
         products={products.slice(0, 6)}
+        setRoute={setRoute}
       />
       <ProductSection
         title="Recommended Products"
         products={products.slice(6, 12)}
+        setRoute={setRoute}
       />
     </div>
   );
 }
 
-function ProductSection({ title, products }) {
+function ProductSection({ title, products, setRoute }) {
   return (
     <section className="product-section">
       <div className="products-header">
@@ -35,7 +37,7 @@ function ProductSection({ title, products }) {
       </div>
       <div className="products-grid">
         {products.map((product) => (
-          <ProductCard type="default" product={product} />
+          <ProductCard type="default" product={product} setRoute={setRoute} />
         ))}
       </div>
     </section>

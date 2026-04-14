@@ -1,5 +1,5 @@
-function ProductDetails() {
-  return <>Product Details</>;
+function ProductDetails({ routeData }) {
+  return <>Product Details: {JSON.stringify(routeData)}</>;
 }
 
 export default ProductDetails;
