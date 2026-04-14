@@ -37,7 +37,12 @@ function ProductSection({ title, products, setRoute }) {
       </div>
       <div className="products-grid">
         {products.map((product) => (
-          <ProductCard type="default" product={product} setRoute={setRoute} />
+          <ProductCard
+            key={product.id}
+            type="default"
+            product={product}
+            setRoute={setRoute}
+          />
         ))}
       </div>
     </section>
