@@ -1,0 +1,19 @@
+.default-product-card-header {
+  background-color: hsl(0, 0%, 95%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.default-product-card-body {
+  padding: 1rem;
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  p {
+    color: hsl(0, 0%, 45%);
+  }
+}
