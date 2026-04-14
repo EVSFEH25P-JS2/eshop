@@ -44,7 +44,9 @@ function App() {
         <Nav routeName={route.name} setRoute={updateRoute} />
       </header>
 
-      <main>{page}</main>
+      <main>
+        <div>{page}</div>
+      </main>
 
       <Footer />
     </>

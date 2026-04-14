@@ -1,0 +1,11 @@
+.home-page {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .products-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
