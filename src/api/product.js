@@ -1,5 +1,15 @@
 class Product {
-  constructor(id, title, description, category, price, rating, tags) {
+  constructor(
+    id,
+    title,
+    description,
+    category,
+    price,
+    rating,
+    tags,
+    thumbnail,
+    images,
+  ) {
     this.id = id;
     this.title = title;
     this.description = description;
@@ -7,6 +17,8 @@ class Product {
     this.price = price;
     this.rating = rating;
     this.tags = tags;
+    this.thumbnail = thumbnail;
+    this.images = images;
   }
 }
 
@@ -52,6 +64,8 @@ function mapProduct(product) {
     product.price,
     product.rating,
     product.tags,
+    product.thumbnail,
+    product.images,
   );
 }
 
