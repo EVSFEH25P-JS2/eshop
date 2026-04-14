@@ -45,7 +45,9 @@ async function apiFetchProductById(productId) {
 }
 
 async function apiSearchProducts(query) {
-  const response = await fetch("https://dummyjson.com/products?q=" + query);
+  const response = await fetch(
+    "https://dummyjson.com/products/search?q=" + query,
+  );
 
   if (!response.ok) {
     throw new Error("Failed to search products");
