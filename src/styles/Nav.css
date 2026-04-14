@@ -13,4 +13,21 @@
     list-style: none;
     gap: 0.5rem;
   }
+
+  button {
+    background: none;
+    outline: none;
+    border: none;
+    color: hsl(0, 0%, 35%);
+    padding: 0.25rem 0.35rem;
+  }
+
+  button:hover {
+    background-color: hsl(0, 0%, 95%);
+  }
+
+  button.active {
+    color: black;
+    font-weight: bold;
+  }
 }

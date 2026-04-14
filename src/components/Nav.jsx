@@ -11,10 +11,20 @@ function Nav({ routeName, setRoute }) {
 
         <ul>
           <li>
-            <button onClick={() => setRoute(Page.HOME)}>Home</button>
+            <button
+              className={routeName === Page.HOME ? "active" : ""}
+              onClick={() => setRoute(Page.HOME)}
+            >
+              Home
+            </button>
           </li>
           <li>
-            <button onClick={() => setRoute(Page.SHOP)}>Shop</button>
+            <button
+              className={routeName === Page.SHOP ? "active" : ""}
+              onClick={() => setRoute(Page.SHOP)}
+            >
+              Shop
+            </button>
           </li>
           <li>
             <button onClick={() => setRoute("TODO: add featured page")}>
