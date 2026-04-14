@@ -22,8 +22,10 @@ class Product {
   }
 }
 
-async function apiFetchAllProducts() {
-  const response = await fetch("https://dummyjson.com/products");
+async function apiFetchAllProducts(limit = 30, offset = 0) {
+  const response = await fetch(
+    `https://dummyjson.com/products?limit=${limit}&skip=${offset}`,
+  );
 
   if (!response.ok) {
     throw new Error("Failed to fetch all products");

@@ -7,7 +7,7 @@ function Home({ setRoute }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    apiFetchAllProducts()
+    apiFetchAllProducts(12, 0)
       .then(setProducts)
       .catch((err) => {});
   }, []);
