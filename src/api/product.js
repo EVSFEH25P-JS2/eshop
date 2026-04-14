@@ -55,4 +55,4 @@ function mapProduct(product) {
   );
 }
 
-export { apiFetchAllProducts, apiSearchProducts, apiFetchProductById };
+export { apiFetchAllProducts, apiSearchProducts, apiFetchProductById, Product };
