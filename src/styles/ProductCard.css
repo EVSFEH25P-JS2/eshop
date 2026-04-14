@@ -23,3 +23,7 @@
     color: hsl(0, 0%, 45%);
   }
 }
+
+.card:hover .default-product-card-header img {
+  scale: 1.05;
+}

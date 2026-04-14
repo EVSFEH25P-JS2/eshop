@@ -2,3 +2,7 @@
   border: 1px solid hsl(0, 0%, 95%);
   background-color: white;
 }
+
+.card[role="button"]:hover {
+  cursor: pointer;
+}
