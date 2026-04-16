@@ -30,7 +30,7 @@ function ProductDetails({ routeData, cartService }) {
         setThumbnail(product.thumbnail);
       })
       .catch((err) => setState({ status: "error", message: err.message }));
-  }, []);
+  }, [productId]);
 
   if (state.status === "loading") {
     return <p className="product-status">Loading product...</p>;
