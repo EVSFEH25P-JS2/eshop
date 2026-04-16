@@ -1,7 +1,13 @@
 import "../styles/Cart.css";
 import Card from "./Card";
 
+/**
+ * Kundvagnen som glider in från sidan.
+ * Vi tar emot cartService som hanterar all logik för varor,
+ * och setCartOpen för att kunna stänga vagnen.
+ */
 function Cart({ setCartOpen, cartService }) {
+  // Räkna ut totalpriset genom att summera antal × pris för varje rad.
   let totalPrice = cartService.items.reduce(
     (sum, item) => sum + item.amount * item.product.price,
     0,
@@ -14,6 +20,7 @@ function Cart({ setCartOpen, cartService }) {
         <button onClick={cartService.clearItems}>Clear</button>
         <span>Total price: {totalPrice}</span>
       </div>
+      {/* Vi renderar en CartItem per rad i kundvagnen. */}
       <ul>
         {cartService.items.map(({ amount, product }) => (
           <li key={product.id}>
@@ -29,6 +36,10 @@ function Cart({ setCartOpen, cartService }) {
   );
 }
 
+/**
+ * En enskild rad i kundvagnen med bild, namn, pris och knappar för att justera antal.
+ * Vi använder cartService direkt härifrån så att varje rad kan öka, minska eller ta bort sig själv.
+ */
 function CartItem({ amount, product, cartService }) {
   return (
     <Card>
@@ -41,6 +52,7 @@ function CartItem({ amount, product, cartService }) {
             {product.title} ({product.price} kr)
           </p>
           <span>Amount: {amount}</span>
+          {/* + och - justerar antalet; når vi 0 via decrementItem tas varan bort automatiskt. */}
           <button onClick={() => cartService.addOrIncrementItem(product)}>
             +
           </button>

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mockup — Modern Minimalist</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F8F8FC;
+      --accent: #5C6BC0;
+      --accent-dark: #3949AB;
+      --accent-light: #E8EAF6;
+      --text-primary: #111111;
+      --text-secondary: #555566;
+      --text-muted: #9999AA;
+      --border: #EBEBF0;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 24px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(92,107,192,0.18);
+      --radius-card: 12px;
+      --radius-btn: 9999px;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+      letter-spacing: -0.5px;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--radius-btn);
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover { background: var(--surface); color: var(--text-primary); }
+    .nav-links a.active { color: var(--accent); background: var(--accent-light); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .cart-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 8px 18px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+    }
+    .cart-btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+    .cart-badge {
+      background: white;
+      color: var(--accent);
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 100px 48px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 36px;
+      max-width: 420px;
+    }
+    .btn-group { display: flex; gap: 12px; align-items: center; }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-btn);
+      padding: 14px 32px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--accent);
+      border: 2px solid var(--accent);
+      border-radius: var(--radius-btn);
+      padding: 14px 32px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+    .btn-secondary:hover { background: var(--accent-light); }
+    .hero-image {
+      background: var(--surface);
+      border-radius: 24px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: var(--shadow-md);
+    }
+    .hero-image img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--text-primary);
+      color: white;
+      padding: 20px 48px;
+    }
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 28px; font-weight: 800; color: var(--accent); display: block; letter-spacing: -1px; }
+    .stat-label { font-size: 12px; color: rgba(255,255,255,0.6); letter-spacing: 1px; text-transform: uppercase; }
+
+    /* ── SECTION ── */
+    section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-header { margin-bottom: 48px; }
+    .section-overline {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: block;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: var(--text-primary);
+      display: block;
+    }
+    .section-header-row {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+    .see-all {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .see-all:hover { text-decoration: underline; }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .product-card {
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .product-card.hovered { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(92,107,192,0.2); }
+    .product-card-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+    .product-card-body { padding: 16px; }
+    .product-category {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+    .product-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .product-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .product-price { font-size: 17px; font-weight: 700; color: var(--text-primary); }
+    .product-rating {
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .star { color: #F59E0B; }
+
+    /* ── DIVIDER ── */
+    .divider { height: 1px; background: var(--border); max-width: 1200px; margin: 0 auto; }
+
+    /* ── PRODUCT DETAIL ── */
+    .product-detail {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      padding: 80px 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .detail-gallery { display: flex; flex-direction: column; gap: 12px; }
+    .detail-main-img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      border-radius: 16px;
+      background: var(--surface);
+    }
+    .detail-thumbs { display: flex; gap: 8px; }
+    .detail-thumb {
+      width: 64px;
+      height: 64px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .detail-thumb.active { border-color: var(--accent); }
+    .detail-thumb:hover { border-color: var(--text-muted); }
+    .detail-info { padding-top: 8px; }
+    .detail-badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 16px;
+    }
+    .detail-title {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+    .detail-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    .detail-price {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 24px;
+    }
+    .detail-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+    .detail-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .color-swatches { display: flex; gap: 8px; margin-bottom: 24px; }
+    .swatch {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: transform 0.15s;
+    }
+    .swatch.selected { border-color: var(--text-primary); transform: scale(1.15); }
+    .size-select {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 15px;
+      color: var(--text-primary);
+      background: white;
+      margin-bottom: 24px;
+      cursor: pointer;
+    }
+    .add-to-cart-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 16px;
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .add-to-cart-btn:hover { background: var(--accent-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+
+    /* ── CART SIDEBAR ── */
+    .page-wrapper { display: flex; position: relative; }
+    .cart-sidebar {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 380px;
+      height: 100vh;
+      background: white;
+      border-left: 1px solid var(--border);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      z-index: 200;
+      font-size: 14px;
+    }
+    .cart-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cart-title { font-size: 16px; font-weight: 700; }
+    .cart-count {
+      background: var(--accent);
+      color: white;
+      border-radius: 9999px;
+      padding: 2px 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .cart-close {
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--text-muted);
+      line-height: 1;
+      padding: 4px;
+    }
+    .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; display: flex; flex-direction: column; gap: 16px; }
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .cart-item:last-child { border-bottom: none; }
+    .cart-item-img {
+      width: 72px;
+      height: 72px;
+      object-fit: cover;
+      border-radius: 8px;
+      background: var(--surface);
+      flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; min-width: 0; }
+    .cart-item-title { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px; }
+    .cart-item-price { color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+    .qty-controls { display: flex; align-items: center; gap: 8px; }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      background: white;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-primary);
+      transition: background 0.15s;
+    }
+    .qty-btn:hover { background: var(--surface); }
+    .qty-num { font-weight: 600; font-size: 14px; width: 20px; text-align: center; }
+    .cart-footer {
+      padding: 20px 24px;
+      border-top: 1px solid var(--border);
+    }
+    .cart-total-row { display: flex; justify-content: space-between; margin-bottom: 16px; }
+    .cart-total-label { color: var(--text-secondary); font-size: 14px; }
+    .cart-total-value { font-size: 22px; font-weight: 800; }
+    .checkout-btn {
+      width: 100%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 15px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: background 0.15s;
+    }
+    .checkout-btn:hover { background: var(--accent-dark); }
+    .continue-btn {
+      width: 100%;
+      background: transparent;
+      color: var(--text-secondary);
+      border: none;
+      border-radius: var(--radius-btn);
+      padding: 10px;
+      font-family: inherit;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .continue-btn:hover { color: var(--text-primary); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">ESHOP</span>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">Shop</a></li>
+    <li><a href="#">Featured</a></li>
+    <li><a href="#">Recommended</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="cart-btn">
+      🛒 Cart <span class="cart-badge">2</span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <p class="hero-label">New arrivals · Spring 2026</p>
+    <h1>Discover <span>Something</span> New</h1>
+    <p>Handpicked products from the world's best brands — delivered fast, styled beautifully.</p>
+    <div class="btn-group">
+      <button class="btn-primary">Shop Now →</button>
+      <button class="btn-secondary">Browse All</button>
+    </div>
+  </div>
+  <div class="hero-image">
+    <img src="https://picsum.photos/seed/hero1/800/600" alt="Hero" />
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num">12k+</span><span class="stat-label">Products</span></div>
+    <div class="stat"><span class="stat-num">98%</span><span class="stat-label">Satisfaction</span></div>
+    <div class="stat"><span class="stat-num">Free</span><span class="stat-label">Shipping over $50</span></div>
+    <div class="stat"><span class="stat-num">24/7</span><span class="stat-label">Support</span></div>
+  </div>
+</div>
+
+<!-- FEATURED PRODUCTS -->
+<section>
+  <div class="section-header">
+    <div class="section-header-row">
+      <div>
+        <span class="section-overline">Featured Products</span>
+        <span class="section-title">Editor's Picks</span>
+      </div>
+      <a href="#" class="see-all">See all →</a>
+    </div>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <img class="product-card-img" src="https://picsum.photos/seed/prod1/400/400" alt="Product" />
+      <div class="product-card-body">
+        <div class="product-category">Smartphones</div>
+        <div class="product-title">iPhone X Premium Edition</div>
+        <div class="product-footer">
+          <span class="product-price">$899</span>
+          <span class="product-rating"><span class="star">★</span> 4.8 (320)</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card hovered">
+      <img class="product-card-img" src="https://picsum.photos/seed/prod2/400/400" alt="Product" />
+      <div class="product-card-body">
+        <div class="product-category">Laptops</div>
+        <div class="product-title">MacBook Pro 16" M3</div>
+        <div class="product-footer">
+          <span class="product-price">$2,499</span>
+          <span class="product-rating"><span class="star">★</span> 4.9 (145)</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-card-img" src="https://picsum.photos/seed/prod3/400/400" alt="Product" />
+      <div class="product-card-body">
+        <div class="product-category">Audio</div>
+        <div class="product-title">Sony WH-1000XM5 Headphones</div>
+        <div class="product-footer">
+          <span class="product-price">$349</span>
+          <span class="product-rating"><span class="star">★</span> 4.7 (892)</span>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <img class="product-card-img" src="https://picsum.photos/seed/prod4/400/400" alt="Product" />
+      <div class="product-card-body">
+        <div class="product-category">Wearables</div>
+        <div class="product-title">Apple Watch Ultra 2</div>
+        <div class="product-footer">
+          <span class="product-price">$799</span>
+          <span class="product-rating"><span class="star">★</span> 4.6 (214)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRODUCT DETAIL -->
+<div class="product-detail">
+  <div class="detail-gallery">
+    <img class="detail-main-img" src="https://picsum.photos/seed/detail1/600/600" alt="Product main" />
+    <div class="detail-thumbs">
+      <img class="detail-thumb active" src="https://picsum.photos/seed/detail1/120/120" alt="" />
+      <img class="detail-thumb" src="https://picsum.photos/seed/detail2/120/120" alt="" />
+      <img class="detail-thumb" src="https://picsum.photos/seed/detail3/120/120" alt="" />
+      <img class="detail-thumb" src="https://picsum.photos/seed/detail4/120/120" alt="" />
+    </div>
+  </div>
+  <div class="detail-info">
+    <span class="detail-badge">Laptops</span>
+    <div class="detail-title">MacBook Pro 16" M3 Max</div>
+    <div class="detail-rating">
+      <span class="star">★★★★★</span> 4.9 &nbsp;·&nbsp; 145 reviews
+    </div>
+    <div class="detail-price">$2,499.00</div>
+    <p class="detail-desc">
+      The most powerful MacBook Pro ever. With the M3 Max chip, up to 128GB unified memory,
+      and a stunning Liquid Retina XDR display — built for professionals who demand the absolute best.
+    </p>
+    <div class="detail-label">Color</div>
+    <div class="color-swatches">
+      <div class="swatch selected" style="background:#DC143C;"></div>
+      <div class="swatch" style="background:#1E90FF;"></div>
+      <div class="swatch" style="background:#32CD32;"></div>
+      <div class="swatch" style="background:#708090;"></div>
+      <div class="swatch" style="background:#FFFF00; border: 1px solid #ccc;"></div>
+    </div>
+    <div class="detail-label">Size</div>
+    <select class="size-select">
+      <option>10mm</option>
+      <option>20mm</option>
+      <option>30mm</option>
+    </select>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
+</div>
+
+<!-- CART SIDEBAR -->
+<div class="cart-sidebar">
+  <div class="cart-header">
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span class="cart-title">Your Cart</span>
+      <span class="cart-count">2</span>
+    </div>
+    <button class="cart-close">✕</button>
+  </div>
+  <div class="cart-items">
+    <div class="cart-item">
+      <img class="cart-item-img" src="https://picsum.photos/seed/prod2/144/144" alt="" />
+      <div class="cart-item-info">
+        <div class="cart-item-title">MacBook Pro 16" M3</div>
+        <div class="cart-item-price">$2,499.00</div>
+        <div class="qty-controls">
+          <button class="qty-btn">−</button>
+          <span class="qty-num">1</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-item">
+      <img class="cart-item-img" src="https://picsum.photos/seed/prod3/144/144" alt="" />
+      <div class="cart-item-info">
+        <div class="cart-item-title">Sony WH-1000XM5</div>
+        <div class="cart-item-price">$349.00</div>
+        <div class="qty-controls">
+          <button class="qty-btn">−</button>
+          <span class="qty-num">2</span>
+          <button class="qty-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-total-row">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-value">$3,197.00</span>
+    </div>
+    <button class="checkout-btn">Proceed to Checkout →</button>
+    <button class="continue-btn">Continue shopping</button>
+  </div>
+</div>
+
+</body>
+</html>
