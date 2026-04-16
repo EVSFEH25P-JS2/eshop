@@ -6,7 +6,7 @@ import "../styles/Nav.css";
  * Vi tar emot routeName för att kunna markera vilken sida som är aktiv,
  * och setRoute för att kunna byta sida när användaren klickar.
  */
-function Nav({ routeName, setRoute }) {
+function Nav({ routeName, setRoute, setCartOpen }) {
   return (
     <nav className="nav">
       <div>
@@ -48,7 +48,9 @@ function Nav({ routeName, setRoute }) {
       </div>
 
       {/* TODO: lägg till t.ex. kundvagn eller inloggning här */}
-      <div></div>
+      <div>
+        <button onClick={() => setCartOpen(true)}>Cart</button>
+      </div>
     </nav>
   );
 }

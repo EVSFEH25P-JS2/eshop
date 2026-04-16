@@ -4,7 +4,7 @@ import Card from "../components/Card";
 import "../styles/ProductDetails.css";
 import ColorSelect from "../components/ColorSelect";
 
-function ProductDetails({ routeData }) {
+function ProductDetails({ routeData, cartService }) {
   const productId = routeData.productId;
 
   // TODO: Add productId validation and error handling
@@ -89,7 +89,9 @@ function ProductDetails({ routeData }) {
               colors={colors}
             />
 
-            <button>Add to cart</button>
+            <button onClick={() => cartService.addOrIncrementItem(product)}>
+              Add to cart
+            </button>
           </div>
         </div>
       </Card>
