@@ -1,0 +1,13 @@
+.color-select {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.color-select button {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+}

@@ -25,7 +25,11 @@ function Home({ setRoute }) {
   }
 
   if (state.status === "error") {
-    return <p className="home-status home-status--error">Failed to load products: {state.message}</p>;
+    return (
+      <p className="home-status home-status--error">
+        Failed to load products: {state.message}
+      </p>
+    );
   }
 
   return (

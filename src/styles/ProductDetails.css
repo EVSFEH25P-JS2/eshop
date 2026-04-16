@@ -1,0 +1,12 @@
+#product-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+#product-details-grid {
+  max-width: 70vw;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+}
