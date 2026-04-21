@@ -1,23 +1,23 @@
 import Card from "./Card";
 import "../styles/ProductCard.css";
-import { Page } from "../App";
+import { Link } from "react-router";
 
 /**
  * Visar ett produktkort och navigerar till produktsidan när man klickar.
  * Vi stödjer två varianter via "type"-propen: "default" (stor) och "small" (liten).
  */
-function ProductCard({ type = "default", product, setRoute }) {
+function ProductCard({ type = "default", product }) {
   let variant = null;
   if (type === "small") {
-    variant = <SmallProductCard product={product} setRoute={setRoute} />;
+    variant = <SmallProductCard product={product} />;
   } else {
-    variant = <DefaultProductCard product={product} setRoute={setRoute} />;
+    variant = <DefaultProductCard product={product} />;
   }
 
   return (
     // Vi skickar produktens id med i route-datan så att ProductDetails vet vad som ska hämtas.
-    <Card onClick={() => setRoute(Page.PRODUCT, { productId: product.id })}>
-      {variant}
+    <Card>
+      <Link to={`/products/${product.id}`}>{variant}</Link>
     </Card>
   );
 }

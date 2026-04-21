@@ -6,7 +6,7 @@ import { apiFetchAllProducts } from "../api/product";
 /**
  * Startsidan – visar utvalda och rekommenderade produkter i två sektioner.
  */
-function Home({ setRoute }) {
+function Home() {
   // Vi använder ett enda state-objekt med ett "status"-fält istället för tre separata states.
   // Det gör det tydligt vilka tillstånd som är möjliga: "loading", "error" eller "success".
   const [state, setState] = useState({ status: "loading" });
@@ -37,12 +37,10 @@ function Home({ setRoute }) {
       <ProductSection
         title="Featured Products"
         products={state.products.slice(0, 6)}
-        setRoute={setRoute}
       />
       <ProductSection
         title="Recommended Products"
         products={state.products.slice(6, 12)}
-        setRoute={setRoute}
       />
     </div>
   );
@@ -51,7 +49,7 @@ function Home({ setRoute }) {
 /**
  * En sektion med en rubrik och ett rutnät av produktkort.
  */
-function ProductSection({ title, products, setRoute }) {
+function ProductSection({ title, products }) {
   return (
     <section className="product-section">
       <div className="products-header">
@@ -62,12 +60,7 @@ function ProductSection({ title, products, setRoute }) {
         {/* key={product.id} behövs för att React ska kunna hålla koll på vilken
             komponent som är vilken när listan uppdateras. */}
         {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            type="default"
-            product={product}
-            setRoute={setRoute}
-          />
+          <ProductCard key={product.id} type="default" product={product} />
         ))}
       </div>
     </section>

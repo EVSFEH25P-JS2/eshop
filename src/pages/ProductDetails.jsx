@@ -3,14 +3,20 @@ import { apiFetchProductById } from "../api/product";
 import Card from "../components/Card";
 import "../styles/ProductDetails.css";
 import ColorSelect from "../components/ColorSelect";
+import { useParams } from "react-router";
 
 /**
  * Detaljsidan för en enskild produkt.
  * Vi tar emot productId via routeData och hämtar produkten från API:et när sidan laddas.
  * cartService skickas vidare så att användaren kan lägga till produkten i kundvagnen.
  */
-function ProductDetails({ routeData, cartService }) {
-  const productId = routeData.productId;
+function ProductDetails({ cartService }) {
+  const { id } = useParams();
+
+  const productId = Number.parseInt(id);
+  if (Number.isNaN(productId)) {
+    return <p>Invalid product id</p>;
+  }
 
   // TODO: Add productId validation and error handling
 

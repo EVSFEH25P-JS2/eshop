@@ -1,4 +1,4 @@
-import { Page } from "../App";
+import { NavLink } from "react-router";
 import "../styles/Nav.css";
 
 /**
@@ -6,7 +6,7 @@ import "../styles/Nav.css";
  * Vi tar emot routeName för att kunna markera vilken sida som är aktiv,
  * och setRoute för att kunna byta sida när användaren klickar.
  */
-function Nav({ routeName, setRoute, setCartOpen }) {
+function Nav({ setCartOpen }) {
   return (
     <nav className="nav">
       <div>
@@ -16,38 +16,30 @@ function Nav({ routeName, setRoute, setCartOpen }) {
         </div>
 
         <ul>
-          {/* Vi jämför routeName med Page-konstanterna för att sätta "active"-klassen rätt. */}
           <li>
-            <button
-              className={routeName === Page.HOME ? "active" : ""}
-              onClick={() => setRoute(Page.HOME)}
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
             >
               Home
-            </button>
+            </NavLink>
           </li>
           <li>
-            <button
-              className={routeName === Page.SHOP ? "active" : ""}
-              onClick={() => setRoute(Page.SHOP)}
+            <NavLink
+              to="/shop"
+              className={({ isActive }) =>
+                `nav-link ${isActive ? "active" : ""}`
+              }
             >
               Shop
-            </button>
-          </li>
-          {/* TODO: implementera Featured- och Recommended-sidor */}
-          <li>
-            <button onClick={() => setRoute("TODO: add featured page")}>
-              Featured
-            </button>
-          </li>
-          <li>
-            <button onClick={() => setRoute("TODO: add recommended page")}>
-              Recommended
-            </button>
+            </NavLink>
           </li>
         </ul>
       </div>
 
-      {/* TODO: lägg till t.ex. kundvagn eller inloggning här */}
+      {/* TODO: lägg till t.ex. inloggning här */}
       <div>
         <button onClick={() => setCartOpen(true)}>Cart</button>
       </div>
