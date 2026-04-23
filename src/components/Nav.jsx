@@ -1,12 +1,14 @@
 import { NavLink } from "react-router";
 import "../styles/Nav.css";
+import { useCartOpenStore } from "../stores/cart";
 
 /**
  * Navigeringsfältet högst upp på sidan.
  * Vi tar emot routeName för att kunna markera vilken sida som är aktiv,
  * och setRoute för att kunna byta sida när användaren klickar.
  */
-function Nav({ setCartOpen }) {
+function Nav() {
+  const toggleCart = useCartOpenStore((state) => state.toggle);
   return (
     <nav className="nav">
       <div>
@@ -41,7 +43,7 @@ function Nav({ setCartOpen }) {
 
       {/* TODO: lägg till t.ex. inloggning här */}
       <div>
-        <button onClick={() => setCartOpen(true)}>Cart</button>
+        <button onClick={() => toggleCart()}>Cart</button>
       </div>
     </nav>
   );

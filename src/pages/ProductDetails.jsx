@@ -4,13 +4,14 @@ import Card from "../components/Card";
 import "../styles/ProductDetails.css";
 import ColorSelect from "../components/ColorSelect";
 import { useParams } from "react-router";
+import { useCartStore } from "../stores/cart";
 
 /**
  * Detaljsidan för en enskild produkt.
  * Vi tar emot productId via routeData och hämtar produkten från API:et när sidan laddas.
  * cartService skickas vidare så att användaren kan lägga till produkten i kundvagnen.
  */
-function ProductDetails({ cartService }) {
+function ProductDetails() {
   const { id } = useParams();
 
   const productId = Number.parseInt(id);
@@ -30,6 +31,8 @@ function ProductDetails({ cartService }) {
     "#1E90FF",
     "#708090",
   ];
+
+  const addOrIncrementItem = useCartStore((state) => state.addOrIncrementItem);
 
   // state håller hämtningsstatusen – "loading", "success" eller "error".
   const [state, setState] = useState({ status: "loading" });
@@ -109,7 +112,7 @@ function ProductDetails({ cartService }) {
               colors={colors}
             />
 
-            <button onClick={() => cartService.addOrIncrementItem(product)}>
+            <button onClick={() => addOrIncrementItem(product)}>
               Add to cart
             </button>
           </div>
